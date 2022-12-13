@@ -10,7 +10,15 @@ const taskSchema = mongoose.Schema({
         type: Boolean,
         required: true,
         default: false
-    }
+    },
+    user: [{
+        type: mongoose.Types.ObjectId,
+        ref: "User"
+
+    }]
+
+
+
 
 
 }, {
@@ -18,7 +26,21 @@ const taskSchema = mongoose.Schema({
     timestamps: true, versionKey: false
 
 })
+// const Task = mongoose.model('task', taskSchema);
 
-const Task = mongoose.model('task', taskSchema);
 
-module.exports = Task;
+
+// taskSchema.methods = {
+//     findCompleted: function () {
+//         return mongoose.model("task").find({ completed: true })
+//     }
+// }
+
+// taskSchema.statics = {
+//     find: function () {
+//         return this.find({ name: /a/i });
+//     }
+// }
+
+
+module.exports = taskSchema;
